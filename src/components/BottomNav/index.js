@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./index.scss";
 
 const menu = [
@@ -7,36 +7,31 @@ const menu = [
     key: "home",
     title: "首页",
     link: "/",
-    icon: "shouye"
+    icon: "shouye",
   },
   {
-    key: "cart",
-    title: "购物车",
-    link: "/cart",
-    icon: "fenlei"
+    key: "login",
+    title: "登陆",
+    link: "/login",
+    icon: "fenlei",
   },
-  {
-    key: "olist",
-    title: "订单列表",
-    link: "/olist",
-    icon: "icon-"
-  },
+
   {
     key: "user",
     title: "我的淘宝",
     link: "/user",
-    icon: "wode"
-  }
+    icon: "wode",
+  },
 ];
 
 export default class BottomNav extends Component {
-  componentWillUnmount() {
-    console.log("BottomNav-componentWillUnmount"); //sy-log
+  componentDidMount() {
+    console.log("BottomNav:componentDidMount"); //sy-log
   }
   render() {
     return (
       <ul className="bottomNav">
-        {menu.map(item => (
+        {menu.map((item) => (
           <MenuItem key={item.key} {...item} />
         ))}
       </ul>

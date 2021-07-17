@@ -33,24 +33,27 @@ const routes = [
 export default function Routes(props) {
   return (
     <Router>
-      {/* 能获取到history location match吗，来自context */}
-      {/* <BottomNav /> */}
-      <Route routes={routes} component={TopBar} />
+      <BasicLayout>
+        {/* <Route routes={routes} component={TopBar} /> */}
+        <TopBar />
+        <Switch>
+          {routes.map((item) => {
+            return (
+              <Route
+                {...item.props}
+                path={item.path}
+                key={item.path}
+                component={item.component}
+              />
+            );
+          })}
+        </Switch>
 
-      {/* //!不设置path，则都会渲染(因为每个页面都会用到这组件) */}
-      <Route component={BottomNav} />
-      <Switch>
-        {routes.map((item) => {
-          return (
-            <Route
-              {...item.props}
-              path={item.path}
-              key={item.path}
-              component={item.component}
-            />
-          );
-        })}
-      </Switch>
+        {/* //!不设置path，则都会渲染(因为每个页面都会用到这组件) */}
+        {/* <Route component={BottomNav} /> */}
+        {/* //!其实用下面的方式更佳 */}
+        <BottomNav />
+      </BasicLayout>
     </Router>
   );
 }
