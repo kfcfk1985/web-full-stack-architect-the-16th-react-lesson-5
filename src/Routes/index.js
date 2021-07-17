@@ -38,14 +38,28 @@ export default function Routes(props) {
         <TopBar />
         <Switch>
           {routes.map((item) => {
-            return (
-              <Route
-                {...item.props}
-                path={item.path}
-                key={item.path}
-                component={item.component}
-              />
-            );
+            if (item.path === "/user") {
+              //!为用户界面，需要登陆，用路由拦截
+              return (
+                <PrivateRoute key={item.path}>
+                  <Route
+                    {...item.props}
+                    path={item.path}
+                    key={item.path}
+                    component={item.component}
+                  />
+                </PrivateRoute>
+              );
+            } else {
+              return (
+                <Route
+                  {...item.props}
+                  path={item.path}
+                  key={item.path}
+                  component={item.component}
+                />
+              );
+            }
           })}
         </Switch>
 
