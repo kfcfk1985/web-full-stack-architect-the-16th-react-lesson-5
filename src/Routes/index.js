@@ -37,6 +37,7 @@ export default function Routes(props) {
       {/* <BottomNav /> */}
       <Route routes={routes} component={TopBar} />
 
+      {/* //!不设置path，则都会渲染(因为每个页面都会用到这组件) */}
       <Route component={BottomNav} />
       <Switch>
         {routes.map((item) => {
