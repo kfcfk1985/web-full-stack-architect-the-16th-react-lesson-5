@@ -5,11 +5,20 @@ import BasicLayout from "../../layout/BasicLayout/";
 import { loginAction } from "../../action/login";
 import "./index.scss";
 
-export default connect(({ user }) => ({ user }), {
-  login: (userInfo) => (dispatch) => {
-    loginAction(dispatch, userInfo);
-  },
-})(
+export default connect(
+  ({ user }) => ({ user }),
+  // !thunk的使用方式
+  // {
+  //   login: (userInfo) => (dispatch) => {
+  //     loginAction(dispatch, userInfo);
+  //   },
+  // }
+
+  // !saga的使用方式
+  {
+    login: (userInfo) => ({ type: "loginSaga", payload: userInfo }),
+  }
+)(
   class LoginPage extends Component {
     constructor(props) {
       super(props);
