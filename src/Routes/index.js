@@ -34,8 +34,8 @@ export default function Routes(props) {
   return (
     <Router>
       <BasicLayout>
-        {/* <Route routes={routes} component={TopBar} /> */}
         <TopBar />
+
         <Switch>
           {routes.map((item) => {
             if (item.path === "/user") {
