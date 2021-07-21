@@ -63,10 +63,11 @@ export default function Routes(props) {
           })}
         </Switch>
 
+        {/* //!其实用下面的方式更佳：因为用Route的话，可以从props中接收到history，location，match等对象 */}
+        {/* <BottomNav /> */}
+
         {/* //!不设置path，则都会渲染(因为每个页面都会用到这组件) */}
-        {/* <Route component={BottomNav} /> */}
-        {/* //!其实用下面的方式更佳 */}
-        <BottomNav />
+        <Route component={BottomNav} />
       </BasicLayout>
     </Router>
   );
